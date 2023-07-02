@@ -17,12 +17,12 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <kspcontroller.h>
 #include "main.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,14 +45,7 @@ ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN PV */
 extern USBD_HandleTypeDef hUsbDeviceFS;
-typedef struct
-{
-	uint8_t button;
-	int8_t mouse_x;
-	int8_t mouse_y;
-	int8_t wheel;
-} mouseHID;
-mouseHID mousehid = {0,0,0,0};
+extern kspControllerHID kspcontrollerhid;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -84,7 +77,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  kspcontroller_init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
