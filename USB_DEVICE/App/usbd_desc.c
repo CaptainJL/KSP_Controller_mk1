@@ -62,10 +62,10 @@
   * @{
   */
 
-#define USBD_VID     2000
+#define USBD_VID     0x5432
 #define USBD_LANGID_STRING     1033
 #define USBD_MANUFACTURER_STRING     "JLS Hobbies"
-#define USBD_PID_FS     10000
+#define USBD_PID_FS     0x6789
 #define USBD_PRODUCT_STRING_FS     "KSP Controller"
 #define USBD_CONFIGURATION_STRING_FS     "Custom HID Config"
 #define USBD_INTERFACE_STRING_FS     "Custom HID Interface"

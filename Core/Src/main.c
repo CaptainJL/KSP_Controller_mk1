@@ -17,12 +17,13 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <kspcontroller.h>
 #include "main.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "kspcontroller.h"
+#include "usbd_customhid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +46,9 @@ ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN PV */
 extern USBD_HandleTypeDef hUsbDeviceFS;
-extern kspControllerHID kspcontrollerhid;
+extern kspControllerKeysHID kspcontroller_keys;
+extern kspControllerJoyHID kspcontroller_leftjoy;
+extern kspControllerJoyHID kspcontroller_rightjoy;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,6 +105,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  kspcontroller_keys.KEYCODE1 = 0x05;
+	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
+	  HAL_Delay(50);
+	  kspcontroller_keys.KEYCODE1 = 0x00;
+	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
+	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
