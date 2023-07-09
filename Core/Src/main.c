@@ -106,12 +106,12 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  kspController.joyLy = 150;
 	  kspController.joyRz = 100;
-//	  kspController.mx0 = 0x00;
+	  kspController.butMx = 0x55;
 	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspController, sizeof(kspController));
 	  HAL_Delay(500);
 	  kspController.joyLy = 50;
 	  kspController.joyRz = 200;
-//	  kspController.mx0 = 0x05;
+	  kspController.butMx = 0xAA;
 	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspController, sizeof(kspController));
 	  HAL_Delay(500);
   }
