@@ -94,29 +94,51 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 	/* Based on https://www.usb.org/sites/default/files/hut1_21_0.pdf */
 	/* https://github.com/vostrenkov/EazyJoy/blob/master/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c */
 
+		/* 6 */
 		0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
 		0x09, 0x05,        // Usage (Game Pad)
 		0xA1, 0x01,        // Collection (Application)
+
+		/* 30 */
 		0x09, 0x01,        //   Usage (Pointer)
 		0xA1, 0x00,        //   Collection (Physical)
 		0x09, 0x30,        //     Usage (X)
 		0x09, 0x31,        //     Usage (Y)
+		0x09, 0x32,        //     Usage (X)
 		0x15, 0x00,        //     Logical Minimum (0)
 		0x26, 0xFF, 0x00,  //     Logical Maximum (255)
 		0x35, 0x00,        //     Physical Minimum (0)
 		0x46, 0xFF, 0x00,  //     Physical Maximum (255)
 		0x66, 0x00, 0x00,  //     Unit (None)
 		0x75, 0x08,        //     Report Size (8)
-		0x95, 0x02,        //     Report Count (2)
+		0x95, 0x03,        //     Report Count (3)
 		0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
 		0xC0,              //   End Collection
+
+		/* 30 */
+		0x09, 0x01,        //   Usage (Pointer)
+		0xA1, 0x00,        //   Collection (Physical)
+		0x09, 0x33,        //     Usage (X)
+		0x09, 0x34,        //     Usage (Y)
+		0x09, 0x35,        //     Usage (Z)
+		0x15, 0x00,        //     Logical Minimum (0)
+		0x26, 0xFF, 0x00,  //     Logical Maximum (255)
+		0x35, 0x00,        //     Physical Minimum (0)
+		0x46, 0xFF, 0x00,  //     Physical Maximum (255)
+		0x66, 0x00, 0x00,  //     Unit (None)
+		0x75, 0x08,        //     Report Size (8)
+		0x95, 0x03,        //     Report Count (3)
+		0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+		0xC0,              //   End Collection
+
+		/* 16 */
 		0x05, 0x09,        //   Usage Page (Button)
 		0x19, 0x01,        //   Usage Minimum (0x01)
-		0x29, 0x04,        //   Usage Maximum (0x04)
-		0x95, 0x04,        //   Report Count (4)
+		0x29, 0x08,        //   Usage Maximum (0x08)
+		0x95, 0x08,        //   Report Count (8)
 		0x75, 0x01,        //   Report Size (1)
 		0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-		0x95, 0x04,        //   Report Count (4)
+		0x95, 0x08,        //   Report Count (8)
 		0x81, 0x03,
 
 
