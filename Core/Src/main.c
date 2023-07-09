@@ -94,7 +94,6 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   kspcontroller_setToCentre();
-//  HAL_Delay(2000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -106,12 +105,14 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  kspController.joyLy = 150;
 	  kspController.joyRz = 100;
-	  kspController.butMx = 0x55;
+	  kspController.butMx0to7 = 0x55;
+	  kspController.butMx8to9 = 0x02;
 	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspController, sizeof(kspController));
 	  HAL_Delay(500);
 	  kspController.joyLy = 50;
 	  kspController.joyRz = 200;
-	  kspController.butMx = 0xAA;
+	  kspController.butMx0to7 = 0xAA;
+	  kspController.butMx8to9 = 0x01;
 	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspController, sizeof(kspController));
 	  HAL_Delay(500);
   }
