@@ -105,12 +105,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  kspcontroller_keys.KEYCODE1 = 0x05;
-	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
-	  HAL_Delay(50);
-	  kspcontroller_keys.KEYCODE1 = 0x00;
-	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
-	  HAL_Delay(1000);
+//	  kspcontroller_keys.KEYCODE1 = 0x05;
+//	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
+//	  HAL_Delay(50);
+//	  kspcontroller_keys.KEYCODE1 = 0x00;
+//	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
+//	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
