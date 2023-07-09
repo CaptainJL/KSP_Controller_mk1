@@ -46,9 +46,7 @@ ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN PV */
 extern USBD_HandleTypeDef hUsbDeviceFS;
-extern kspControllerKeysHID kspcontroller_keys;
-extern kspControllerJoyHID kspcontroller_leftjoy;
-extern kspControllerJoyHID kspcontroller_rightjoy;
+extern kspControllerHIDStruct kspController;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,7 +93,8 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-
+  kspcontroller_setToCentre();
+//  HAL_Delay(2000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -105,12 +104,16 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  kspcontroller_keys.KEYCODE1 = 0x05;
-//	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
-//	  HAL_Delay(50);
-//	  kspcontroller_keys.KEYCODE1 = 0x00;
-//	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspcontroller_keys, sizeof(kspcontroller_keys));
-//	  HAL_Delay(1000);
+	  kspController.joyLy = 150;
+	  kspController.joyRz = 100;
+//	  kspController.mx0 = 0x00;
+	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspController, sizeof(kspController));
+	  HAL_Delay(500);
+	  kspController.joyLy = 50;
+	  kspController.joyRz = 200;
+//	  kspController.mx0 = 0x05;
+	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspController, sizeof(kspController));
+	  HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }

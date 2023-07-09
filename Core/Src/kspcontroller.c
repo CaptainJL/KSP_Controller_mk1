@@ -4,11 +4,10 @@
  *  Created on: Jul 2, 2023
  *      Author: User
  */
+#include <string.h>
 #include <kspcontroller.h>
 
-kspControllerKeysHID kspcontroller_keys;
-kspControllerJoyHID kspcontroller_leftjoy;
-kspControllerJoyHID kspcontroller_rightjoy;
+kspControllerHIDStruct kspController;
 
 void kspcontroller_init(void)
 {
@@ -17,12 +16,17 @@ void kspcontroller_init(void)
 
 void kspcontroller_resetToZero(void)
 {
-	kspcontroller_keys.MODIFIER = 0;
-	kspcontroller_keys.RESERVED = 0;
-	kspcontroller_keys.KEYCODE1 = 0;
-	kspcontroller_keys.KEYCODE2 = 0;
-	kspcontroller_keys.KEYCODE3 = 0;
-	kspcontroller_keys.KEYCODE4 = 0;
-	kspcontroller_keys.KEYCODE5 = 0;
-	kspcontroller_keys.KEYCODE6 = 0;
+	memset(&kspController, 0, sizeof(kspController));
 }
+
+void kspcontroller_setToCentre(void)
+{
+	memset(&kspController, 0, sizeof(kspController));
+	kspController.joyLx = 128;
+	kspController.joyLy = 128;
+	kspController.joyLz = 128;
+	kspController.joyRx = 128;
+	kspController.joyRy = 128;
+	kspController.joyRz = 128;
+}
+
