@@ -93,69 +93,36 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
   /* USER CODE BEGIN 0 */
 	/* Based on https://www.usb.org/sites/default/files/hut1_21_0.pdf */
 	/* https://github.com/vostrenkov/EazyJoy/blob/master/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c */
+	/* https://usb.org/document-library/hid-descriptor-tool */
 
-		/* 6 */
-		0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
-		0x09, 0x05,        // Usage (Game Pad = 0x05)
-		0xA1, 0x01,        // Collection (Application)
-
-		/* 30 */
-		0x09, 0x01,        //   Usage (Pointer)
-		0xA1, 0x00,        //   Collection (Physical)
-		0x09, 0x30,        //     Usage (X)
-		0x09, 0x31,        //     Usage (Y)
-		0x09, 0x32,        //     Usage (X)
-		0x15, 0x00,        //     Logical Minimum (0)
-		0x26, 0xFF, 0x00,  //     Logical Maximum (255)
-		0x35, 0x00,        //     Physical Minimum (0)
-		0x46, 0xFF, 0x00,  //     Physical Maximum (255)
-		0x66, 0x00, 0x00,  //     Unit (None)
-		0x75, 0x08,        //     Report Size (8)
-		0x95, 0x03,        //     Report Count (3)
-		0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-		0xC0,              //   End Collection
-
-		/* 30 */
-		0x09, 0x01,        //   Usage (Pointer)
-		0xA1, 0x00,        //   Collection (Physical)
-		0x09, 0x33,        //     Usage (X)
-		0x09, 0x34,        //     Usage (Y)
-		0x09, 0x35,        //     Usage (Z)
-		0x15, 0x00,        //     Logical Minimum (0)
-		0x26, 0xFF, 0x00,  //     Logical Maximum (255)
-		0x35, 0x00,        //     Physical Minimum (0)
-		0x46, 0xFF, 0x00,  //     Physical Maximum (255)
-		0x66, 0x00, 0x00,  //     Unit (None)
-		0x75, 0x08,        //     Report Size (8)
-		0x95, 0x03,        //     Report Count (3)
-		0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-		0xC0,              //   End Collection
-
-		/* 26 */
-		0x09, 0x01,        //   Usage (Pointer)
-		0xA1, 0x00,        //   Collection (Physical)
-		0x09, 0x36,        //     Usage (Throttle)
-		0x15, 0x00,        //     Logical Minimum (0)
-		0x26, 0xFF, 0x00,  //     Logical Maximum (255)
-		0x35, 0x00,        //     Physical Minimum (0)
-		0x46, 0xFF, 0x00,  //     Physical Maximum (255)
-		0x66, 0x00, 0x00,  //     Unit (None)
-		0x75, 0x08,        //     Report Size (8)
-		0x95, 0x01,        //     Report Count (1)
-		0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-		0xC0,              //   End Collection
-
-		/* 19 */
-		0x05, 0x09,        //   Usage Page (Button)
-		0xA1, 0x00,        //   Collection (Physical)
-		0x19, 0x01,        //   Usage Minimum (0x01)
-		0x29, 0x0A,        //   Usage Maximum (0x0A)
-		0x15, 0x00,        //   LOGICAL_MINIMUM (0)
-		0x25, 0x01,        //   LOGICAL_MAXIMUM (2)
-		0x75, 0x01,        //   Report Size (1)
-		0x95, 0x10,        //   Report Count (8)
-		0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-		0xC0,              //   End Collection
+		0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
+		0x09, 0x05,                    // USAGE (Game Pad)
+		0xa1, 0x01,                    // COLLECTION (Application)
+		0x09, 0x01,                    //   USAGE (Pointer)
+		0xa1, 0x00,                    //   COLLECTION (Physical)
+		0x09, 0x30,                    //     USAGE (X)
+		0x09, 0x31,                    //     USAGE (Y)
+		0x09, 0x32,                    //     USAGE (Z)
+		0x09, 0x33,                    //     USAGE (Rx)
+		0x09, 0x34,                    //     USAGE (Ry)
+		0x09, 0x35,                    //     USAGE (Rz)
+		0x09, 0x36,                    //     USAGE (Slider)
+		0x15, 0x00,                    //     LOGICAL_MINIMUM (0)
+		0x26, 0xff, 0x0f,              //     LOGICAL_MAXIMUM (4095)
+		0x75, 0x10,                    //     REPORT_SIZE (16)
+		0x95, 0x07,                    //     REPORT_COUNT (7)
+		0x81, 0x02,                    //   INPUT (Data,Var,Abs)
+		0xc0,                          //         END_COLLECTION
+		0x05, 0x09,                    //   USAGE_PAGE (Button)
+		0xa1, 0x00,                    //   COLLECTION (Physical)
+		0x19, 0x01,                    //     USAGE_MINIMUM (Button 1)
+		0x29, 0x0a,                    //     USAGE_MAXIMUM (Button 10)
+		0x15, 0x00,                    //     LOGICAL_MINIMUM (0)
+		0x25, 0x01,                    //     LOGICAL_MAXIMUM (1)
+		0x75, 0x01,                    //     REPORT_SIZE (1)
+		0x95, 0x10,                    //     REPORT_COUNT (16)
+		0x81, 0x02,                    //     INPUT (Data,Var,Abs)
+		0xc0,                          //     END_COLLECTION
 
   /* USER CODE END 0 */
   0xC0    /*     END_COLLECTION	             */
