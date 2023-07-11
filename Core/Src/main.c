@@ -109,7 +109,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  kspcontroller_update();
-	  HAL_Delay(50);
+//	  HAL_Delay(50);
 	  USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&kspController, sizeof(kspController));
 //	  HAL_Delay(450);
   }
