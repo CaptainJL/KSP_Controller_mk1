@@ -4,6 +4,7 @@
  *  Created on: Jul 2, 2023
  *      Author: User
  */
+#include "main.h"
 #include <string.h>
 #include <kspcontroller.h>
 #include "stm32f1xx_hal.h"
@@ -52,6 +53,20 @@ void kspcontroller_update(void)
 
 static void updateButtonStates(void)
 {
+	uint16_t gpioHigh = 0;
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX0_GPIO_Port, CMX0_Pin) << 0);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX1_GPIO_Port, CMX1_Pin) << 1);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX2_GPIO_Port, CMX2_Pin) << 2);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX3_GPIO_Port, CMX3_Pin) << 3);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX4_GPIO_Port, CMX4_Pin) << 4);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX5_GPIO_Port, CMX5_Pin) << 5);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX6_GPIO_Port, CMX6_Pin) << 6);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX7_GPIO_Port, CMX7_Pin) << 7);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX8_GPIO_Port, CMX8_Pin) << 8);
+	gpioHigh |= (HAL_GPIO_ReadPin(CMX9_GPIO_Port, CMX9_Pin) << 9);
+	gpioHigh |= (HAL_GPIO_ReadPin(JOY_L_B_GPIO_Port, JOY_L_B_Pin) << 10);
+	gpioHigh |= (HAL_GPIO_ReadPin(JOY_R_B_GPIO_Port, JOY_R_B_Pin) << 11);
+	kspController.buttons0to12 = gpioHigh;
 
 }
 
