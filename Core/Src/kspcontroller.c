@@ -41,6 +41,7 @@ void kspcontroller_setToCentre(void)
 	kspController.joyRx = 2047;
 	kspController.joyRy = 2047;
 	kspController.joyRz = 2047;
+	kspController.throttle = 0;
 }
 
 void kspcontroller_update(void)
@@ -67,11 +68,11 @@ static void updateButtonStates(void)
 	gpioHigh |= (HAL_GPIO_ReadPin(JOY_L_B_GPIO_Port, JOY_L_B_Pin) << 10);
 	gpioHigh |= (HAL_GPIO_ReadPin(JOY_R_B_GPIO_Port, JOY_R_B_Pin) << 11);
 	kspController.buttons0to12 = gpioHigh;
-
 }
 
 static void updateLeftJoystick(void)
 {
+	kspController.throttle = adcSamples[0] & 0x0FFF;
 	kspController.joyLx = adcSamples[1] & 0x0FFF;
 	kspController.joyLy = adcSamples[2] & 0x0FFF;
 	kspController.joyLz = adcSamples[3] & 0x0FFF;
